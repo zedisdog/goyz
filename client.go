@@ -3,13 +3,13 @@ package goyz
 import (
 	"encoding/json"
 	"errors"
+	"github.com/zedisdog/goyz/responses"
+	"github.com/zedisdog/goyz/util"
 	"io/ioutil"
 	"net/http"
 	url2 "net/url"
 	"strconv"
 	"strings"
-	"goyz/responses"
-	"goyz/util"
 )
 
 const baseUrl string = "https://open.youzan.com/api/oauthentry/"
@@ -20,7 +20,7 @@ func NewClient(token string) *client {
 
 type client struct {
 	dontReport []int
-	token string
+	token      string
 	httpClient *http.Client
 }
 
@@ -30,7 +30,7 @@ func (c *client) DontReport(code int) {
 	}
 }
 
-func (c *client) post(method string, version string, params map[string]interface{}) (string, error)  {
+func (c *client) post(method string, version string, params map[string]interface{}) (string, error) {
 	response, err := c.httpClient.Do(c.postRequest(method, version, params))
 	if err != nil {
 		return "", err
@@ -77,7 +77,7 @@ func (c *client) postRequest(method string, version string, params map[string]in
 
 func (client) buildUrl(method string, version string) string {
 	methods := strings.Split(method, ".")
-	return baseUrl + strings.Join(methods[:len(methods) - 1], ".") + "/" + version + "/" + methods[len(methods) - 1]
+	return baseUrl + strings.Join(methods[:len(methods)-1], ".") + "/" + version + "/" + methods[len(methods)-1]
 }
 
 func (client) buildQuery(params map[string]interface{}) string {

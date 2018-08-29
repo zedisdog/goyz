@@ -2,7 +2,7 @@ package goyz
 
 import (
 	"encoding/json"
-	"goyz/responses"
+	"github.com/zedisdog/goyz/responses"
 )
 
 func NewSdk(token string) *sdk {
@@ -23,7 +23,7 @@ func (s *sdk) SalesmanAccountsGet(params map[string]interface{}) (*responses.Acc
 	if err != nil {
 		return nil, err
 	}
-	response := &responses.AccountsResponse{};
+	response := &responses.AccountsResponse{}
 	err = json.Unmarshal([]byte(content), response)
 	if err != nil {
 		return nil, err
