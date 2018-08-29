@@ -1,4 +1,4 @@
-package yz
+package goyz
 
 import (
 	"encoding/json"
@@ -8,8 +8,8 @@ import (
 	url2 "net/url"
 	"strconv"
 	"strings"
-	"syncAgentService/yz/responses"
-	"syncAgentService/yz/util"
+	"goyz/responses"
+	"goyz/util"
 )
 
 const baseUrl string = "https://open.youzan.com/api/oauthentry/"

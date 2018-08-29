@@ -1,8 +1,8 @@
-package yz
+package goyz
 
 import (
 	"encoding/json"
-	"syncAgentService/yz/responses"
+	"goyz/responses"
 )
 
 func NewSdk(token string) *sdk {

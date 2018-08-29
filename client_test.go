@@ -1,4 +1,4 @@
-package yz
+package goyz
 
 import (
 	"testing"
