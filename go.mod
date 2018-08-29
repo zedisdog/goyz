@@ -1,1 +1,1 @@
-module goyz
+module github.com/zedisdog/goyz
