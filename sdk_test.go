@@ -7,6 +7,18 @@ import (
 
 const token string = "3b5a23c385163f1f8d8cb20cd1675fa1"
 
+func TestSdk_SalesmanAccountsGet(t *testing.T) {
+	sdk := NewSdk(token)
+	response, err := sdk.SalesmanAccountsGet(map[string]interface{}{"page_size": 100, "page_no": 1})
+	if err != nil {
+		t.Errorf("get response error: %v", err)
+	}
+
+	if len(response.Response.Accounts) == 0 {
+		t.Errorf("expected accounts not eq 0, make sure use the right token")
+	}
+}
+
 func TestSdk_UserWeixinOpenidGet(t *testing.T) {
 	mobile := "15281009123"
 	sdk := NewSdk(token)

@@ -6,7 +6,7 @@ type Account struct {
 	Money           string `json:"money"`
 	Mobile          string `json:"mobile"`
 	Nickname        string `json:"nickname"`
-	CreateAt        string `json:"create_at"`
+	CreatedAt       string `json:"created_at"`
 	OrderNum        int    `json:"order_num"`
 	FansId          int    `json:"fans_id"`
 }
