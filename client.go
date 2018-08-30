@@ -30,15 +30,15 @@ func (c *client) DontReport(code int) {
 	}
 }
 
-func (c *client) post(method string, version string, params map[string]interface{}) (string, error) {
+func (c *client) post(method string, version string, params map[string]interface{}) ([]byte, error) {
 	response, err := c.httpClient.Do(c.postRequest(method, version, params))
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	defer response.Body.Close()
 	content, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	if strings.Contains(string(content), "error_response") == true {
@@ -50,13 +50,13 @@ func (c *client) post(method string, version string, params map[string]interface
 
 		err = errors.New(string(content))
 		if util.InSlice(c.dontReport, errorResponse.ErrorResponse.Code) {
-			return "", err
+			return nil, err
 		} else {
 			panic(err)
 		}
 	}
 
-	return string(content), nil
+	return content, nil
 }
 
 func (c *client) postRequest(method string, version string, params map[string]interface{}) *http.Request {
