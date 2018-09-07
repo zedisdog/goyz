@@ -8,7 +8,7 @@ type Account struct {
 	Nickname        string `json:"nickname"`
 	CreatedAt       string `json:"created_at"`
 	OrderNum        int    `json:"order_num"`
-	FansId          int    `json:"fans_id"`
+	FansId          string    `json:"fans_id"`
 }
 
 type AccountsResponse struct {
