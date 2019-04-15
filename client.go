@@ -3,9 +3,11 @@ package goyz
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/zedisdog/goyz/responses"
 	"github.com/zedisdog/goyz/util"
 	"io/ioutil"
+	"log"
 	"net/http"
 	url2 "net/url"
 	"strconv"
@@ -66,6 +68,7 @@ func (c *client) postRequest(method string, version string, params map[string]in
 	}
 	params["access_token"] = c.token
 	query := c.buildQuery(params)
+	log.Println(fmt.Sprintf("request api [" + method + "],params:" + query))
 	request, err := http.NewRequest("POST", url, strings.NewReader(query))
 	if err != nil {
 		panic(err)
